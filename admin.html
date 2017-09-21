@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="assets/layui/layui/css/layui.css" rel="stylesheet">
+</head>
+<body>
+<ul class="layui-nav layui-nav-tree layui-bg-cyan layui-nav-side" lay-filter="">
+    <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+    <li class="layui-nav-item">
+        <a href="index.html">首页</a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="javascript:;">客户端文档</a>
+        <dl class="layui-nav-child">
+            <dd><a href="client.html#1">选项1</a></dd>
+            <dd><a href="client.html#2">选项2</a></dd>
+        </dl>
+    </li>
+    <li class="layui-nav-item">
+        <a href="javascript:;">管理员端文档</a>
+        <dl class="layui-nav-child">
+            <dd><a href="admin.html#1">选项1</a></dd>
+            <dd><a href="admin.html#2">选项2</a></dd>
+        </dl>
+    </li>
+</ul>
+<a name="1"></a>
+<a name="2"></a>
+<script src="assets/layui/layui/layui.js"></script>
+<script>
+    //注意：导航 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function(){
+        var element = layui.element;
+
+        //一些事件监听
+        element.on('tab(demo)', function(data){
+            console.log(data);
+        });
+    });
+    layui.use('carousel',function () {
+        var carousel = layui.carousel;
+        carousel.render({
+            elem : "#imgs",
+            width : "100%",
+            arrow: 'always'
+        });
+    });
+</script>
+</body>
+</html>

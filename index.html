@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="assets/layui/layui/css/layui.css" rel="stylesheet">
+</head>
+<body>
+<ul class="layui-nav layui-nav-tree layui-bg-cyan layui-nav-side" lay-filter="">
+    <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+    <li class="layui-nav-item">
+        <a href="index.html">首页</a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="javascript:;">客户端文档</a>
+        <dl class="layui-nav-child">
+            <dd><a href="client.html#1">选项1</a></dd>
+            <dd><a href="client.html#2">选项2</a></dd>
+        </dl>
+    </li>
+    <li class="layui-nav-item">
+        <a href="javascript:;">管理员端文档</a>
+        <dl class="layui-nav-child">
+            <dd><a href="admin.html#1">选项1</a></dd>
+            <dd><a href="admin.html#2">选项2</a></dd>
+        </dl>
+    </li>
+</ul>
+<div style="margin-left: 300px; margin-top: 5%;float: left">
+    <fieldset class="layui-elem-field" style="padding: 5%;">
+        <legend>新媒体平台文档首页</legend>
+        <div class="layui-field-box">
+            <div class="layui-carousel" id="imgs">
+                <div carousel-item>
+                    <div class="layui-bg-green" style="padding-top: 10%;"><h1 style="text-align: center;font-size: 50px">新媒体平台接口文档</h1></div>
+                    <div class="layui-bg-orange" style="padding-top: 10%;"><h1 style="text-align: center;font-size: 50px">新媒体平台接口文档</h1></div>
+
+                </div>
+            </div>
+        </div>
+        <hr class="layui-bg-green">
+        <legend>规定了新媒体平台的前后端接口规范及实现原理,方便前后端人员开发、维护使用。上次更新时间:2017-09-20<br></legend>
+    </fieldset>
+</div>
+
+<script src="assets/layui/layui/layui.js"></script>
+<script>
+    //注意：导航 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function(){
+        var element = layui.element;
+
+        //一些事件监听
+        element.on('tab(demo)', function(data){
+            console.log(data);
+        });
+    });
+   layui.use('carousel',function () {
+       var carousel = layui.carousel;
+       carousel.render({
+           elem : "#imgs",
+           width : "100%",
+           arrow: 'always'
+       });
+   });
+</script>
+</body>
+</html>
