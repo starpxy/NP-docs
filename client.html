@@ -26,15 +26,14 @@
         <dl class="layui-nav-child">
             <dd><a href="client.html#1">用户相关接口</a></dd>
             <dd><a href="client.html#2">新闻相关接口</a></dd>
+            <dd><a href="client.html#3">部门相关接口</a></dd>
+            <dd><a href="client.html#4">阅读历史相关接口</a></dd>
+            <dd><a href="client.html#5">模块相关接口</a></dd>
         </dl>
     </li>
     <li class="layui-nav-item">
         <a href="admin.html">管理员端文档</a>
         <dl class="layui-nav-child">
-            <dd><a href="admin.html#1">用户相关接口</a></dd>
-            <dd><a href="admin.html#2">新闻相关接口</a></dd>
-            <dd><a href="admin.html#3">权限相关接口</a></dd>
-            <dd><a href="admin.html#4">统计相关接口</a></dd>
         </dl>
     </li>
 </ul>
@@ -91,6 +90,9 @@
                     <td><strong>功能介绍 :</strong> 用于用户登入系统,置于微信公众号的菜单栏作为系统入口。采用微信安全登录授权openId进行登陆,前端需要根据产生的几种可能结果产出页面,后台选择进行跳转。</td>
                 </tr>
                 <tr>
+                    <td><strong>前端调用方式 :</strong> 无需前端调用</td>
+                </tr>
+                <tr>
                     <td><strong>所需参数 :</strong> 不需要</td>
                 </tr>
                 <tr>
@@ -113,21 +115,32 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><strong>功能介绍 :</strong> 用于用户登入系统,置于微信公众号的菜单栏作为系统入口。采用微信安全登录授权openId进行登陆,前端需要根据产生的几种可能结果产出页面,后台选择进行跳转。</td>
+                    <td><strong>功能介绍 :</strong>当openId检测为新用户时,跳转到该页面提交审核信息。</td>
                 </tr>
                 <tr>
-                    <td><strong>所需参数 :</strong> 不需要</td>
+                    <td><strong>前端调用方式 :</strong> form表单POST方法提交</td>
                 </tr>
                 <tr>
-                    <td><strong>实现方式 :</strong> 使用微信提供的微信安全登录URL拼接静默参数和重定向地址URL(此URL需经过转码)。用户点击后会自动微信静默授权,定向到之前传入的重定向地址,并带回参数code,后台用code换取用户openId。
-                        获取后,在数据库中查找是否有该用户的openId,若没有则跳转至verify.jsp页面进行用户信息输入。若用户存在,则检查用户的身份,若身份为0(未审核通过),则跳转至等待审核页面。若不为0,
-                        则在session中放入user,准许通过,跳转至主页。</td>
+                    <td><strong>所需参数 :</strong> phone_number(11位),name,department(int)</td>
+                </tr>
+                <tr>
+                    <td><strong>实现方式 :</strong> 前端使用form表单向后台提交所需参数,设置input标签中的name属性为所需参数名POST提交到后台。
+                        其中,department参数为枚举,使用 <a href="#">department-showDepartments</a> 方法获取所有需要引用的参数。
+                        后台使用httpSevletRequest接收所需参数,验证参数不为空后将参数包装入user对象中,在Dao层中保存。</td>
                 </tr>
                 </tbody>
             </table>
-            <br>
-            <a name="2"></a>
+            <br><a name="2"></a>
             <legend>新闻相关接口</legend>
+            <hr class="layui-bg-green">
+            <br><a name="3"></a>
+            <legend>部门相关接口</legend>
+            <hr class="layui-bg-green">
+            <br><a name="4"></a>
+            <legend>阅读历史相关接口</legend>
+            <hr class="layui-bg-green">
+            <br><a name="5"></a>
+            <legend>模块相关接口</legend>
             <hr class="layui-bg-green">
         </div>
     </fieldset>

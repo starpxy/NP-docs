@@ -5,6 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="assets/layui/layui/css/layui.css" rel="stylesheet">
+    <style type="text/css">
+        a{
+            color: #5FB878;
+        }
+        .head{
+            color: #5FB878;
+        }
+    </style>
 </head>
 <body>
 <ul class="layui-nav layui-nav-tree layui-bg-cyan layui-nav-side" lay-filter="">
@@ -15,8 +23,6 @@
     <li class="layui-nav-item">
         <a href="client.html">客户端文档</a>
         <dl class="layui-nav-child">
-            <dd><a href="client.html#1">用户相关接口</a></dd>
-            <dd><a href="client.html#2">新闻相关接口</a></dd>
         </dl>
     </li>
     <li class="layui-nav-item  layui-nav-itemed">
@@ -24,15 +30,72 @@
         <dl class="layui-nav-child">
             <dd><a href="admin.html#1">用户相关接口</a></dd>
             <dd><a href="admin.html#2">新闻相关接口</a></dd>
-            <dd><a href="admin.html#3">权限相关接口</a></dd>
-            <dd><a href="admin.html#4">统计相关接口</a></dd>
+            <dd><a href="admin.html#3">部门相关接口</a></dd>
+            <dd><a href="admin.html#4">权限相关接口</a></dd>
+            <dd><a href="admin.html#5">统计相关接口</a></dd>
+            <dd><a href="admin.html#6">阅读历史相关接口</a></dd>
+            <dd><a href="admin.html#7">图片库相关接口</a></dd>
         </dl>
     </li>
 </ul>
-<br><a name="1"></a>
-<br><a name="2"></a>
-<br><a name="3"></a>
-<br><a name="4"></a>
+<div  style="margin-left: 300px; margin-top: 2%;float: left">
+    <fieldset class="layui-elem-field" style="padding: 5%;">
+        <legend>管理员端接口文档</legend>
+        <div class="layui-field-box">
+            <br><a name="1"></a>
+            <legend>用户相关接口</legend>
+            <hr class="layui-bg-green">
+            <table class="layui-table" lay-skin="row">
+                <colgroup>
+                    <col width="200">
+                    <col width="200">
+                    <col width="200">
+                    <col width="400">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>接口名称</th>
+                    <th>API调用名</th>
+                    <th>类型</th>
+                    <th>功能介绍</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>用户登入</td>
+                    <td><a href="#y1">user-portal</a></td>
+                    <td>form</td>
+                    <td>用于用户登入系统,置于微信公众号的菜单栏作为系统入口。采用微信安全登录授权openId进行登陆,前端需要根据产生的几种可能结果产出页面,后台选择进行跳转。</td>
+                </tr>
+                <tr>
+                    <td>提交审核信息</td>
+                    <td><a href="#y2">user-verify</a></td>
+                    <td>form</td>
+                    <td>当openId检测为新用户时,跳转到该页面提交审核信息。</td>
+                </tr>
+                </tbody>
+            </table>
+            <br><a name="2"></a>
+            <legend>新闻相关接口</legend>
+            <hr class="layui-bg-green">
+            <br><a name="3"></a>
+            <legend>部门相关接口</legend>
+            <hr class="layui-bg-green">
+            <br><a name="4"></a>
+            <legend>权限相关接口</legend>
+            <hr class="layui-bg-green">
+            <br><a name="5"></a>
+            <legend>统计相关接口</legend>
+            <hr class="layui-bg-green">
+            <br><a name="6"></a>
+            <legend>阅读历史相关接口</legend>
+            <hr class="layui-bg-green">
+            <br><a name="7"></a>
+            <legend>图片库相关接口</legend>
+            <hr class="layui-bg-green">
+        </div>
+    </fieldset>
+</div>
 <script src="assets/layui/layui/layui.js"></script>
 <script>
     //注意：导航 依赖 element 模块，否则无法进行功能性操作
