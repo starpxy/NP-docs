@@ -72,6 +72,12 @@
                     <td>form</td>
                     <td>当openId检测为新用户时,跳转到该页面提交审核信息。</td>
                 </tr>
+                <tr>
+                    <td>个人信息</td>
+                    <td><a href="#y3">user-info</a></td>
+                    <td>session</td>
+                    <td>个人信息页面的跳转,身份验证成功进入个人信息页面,验证失败则进入登陆过期页面。</td>
+                </tr>
                 </tbody>
             </table>
             <br>
@@ -115,7 +121,7 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><strong>功能介绍 :</strong>当openId检测为新用户时,跳转到该页面提交审核信息。</td>
+                    <td><strong>功能介绍 :</strong> 当openId检测为新用户时,跳转到该页面提交审核信息。</td>
                 </tr>
                 <tr>
                     <td><strong>前端调用方式 :</strong> form表单POST方法提交</td>
@@ -125,8 +131,36 @@
                 </tr>
                 <tr>
                     <td><strong>实现方式 :</strong> 前端使用form表单向后台提交所需参数,设置input标签中的name属性为所需参数名POST提交到后台。
-                        其中,department参数为枚举,使用 <a href="#">department-showDepartments</a> 方法获取所有需要引用的参数。
-                        后台使用httpSevletRequest接收所需参数,验证参数不为空后将参数包装入user对象中,在Dao层中保存。</td>
+                        其中,department中为枚举参数,使用 <a href="#b1">department-listDepartments</a> 方法获取所有需要引用的参数可能值。
+                        提交时提交部门代码(id)即可。后台使用httpSevletRequest接收所需参数,验证参数不为空后将参数包装入user对象中,在Dao层中保存。</td>
+                </tr>
+                </tbody>
+            </table>
+            <br>
+            <a name="y3"></a>
+            <table class="layui-table" lay-even lay-skin="nob">
+                <colgroup>
+                    <col width="1000">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th><strong class="head">user-info : 个人信息页面</strong></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><strong>功能介绍 :</strong> 个人信息页面的跳转,身份验证成功进入个人信息页面,验证失败则进入登陆过期页面。</td>
+                </tr>
+                <tr>
+                    <td><strong>前端调用方式 :</strong> form表单POST方法提交</td>
+                </tr>
+                <tr>
+                    <td><strong>所需参数 :</strong> phone_number(11位),name,department(int)</td>
+                </tr>
+                <tr>
+                    <td><strong>实现方式 :</strong> 前端使用form表单向后台提交所需参数,设置input标签中的name属性为所需参数名POST提交到后台。
+                        其中,department中为枚举参数,使用 <a href="#b1">department-listDepartments</a> 方法获取所有需要引用的参数可能值。
+                        提交时提交部门代码(id)即可。后台使用httpSevletRequest接收所需参数,验证参数不为空后将参数包装入user对象中,在Dao层中保存。</td>
                 </tr>
                 </tbody>
             </table>
@@ -136,6 +170,59 @@
             <br><a name="3"></a>
             <legend>部门相关接口</legend>
             <hr class="layui-bg-green">
+            <table class="layui-table" lay-skin="row">
+                <colgroup>
+                    <col width="200">
+                    <col width="300">
+                    <col width="100">
+                    <col width="400">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>接口名称</th>
+                    <th>API调用名</th>
+                    <th>类型</th>
+                    <th>功能介绍</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>部门列表</td>
+                    <td><a href="#b1">department-listDepartments</a></td>
+                    <td>ajax</td>
+                    <td>在用户状态为验证通过时,返回给前端一串SimpleDepartment的对象数组,描述部门ID和名称。</td>
+                </tr>
+                </tbody>
+            </table>
+            <a name="b1"></a>
+            <table class="layui-table" lay-even lay-skin="nob">
+                <colgroup>
+                    <col width="1000">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th><strong class="head">department-listDepartments : 部门列表接口</strong></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><strong>功能介绍 :</strong> 在用户状态为验证通过时,返回给前端一串SimpleDepartment的对象数组,描述部门ID和名称。</td>
+                </tr>
+                <tr>
+                    <td><strong>前端调用方式 :</strong> ajax</td>
+                </tr>
+                <tr>
+                    <td><strong>所需参数 :</strong> 不需要</td>
+                </tr>
+                <tr>
+                    <td><strong>返回json键值 :</strong> departments</td>
+                </tr>
+                <tr>
+                    <td><strong>实现方式 :</strong> 后台首先通过通用方法验证用户身份,当用户身份合法时带回json参数 "departments" ,形式为json数组。
+                    数组中为简化版本的department对象(SimpleDepartment)</td>
+                </tr>
+                </tbody>
+            </table>
             <br><a name="4"></a>
             <legend>阅读历史相关接口</legend>
             <hr class="layui-bg-green">
